@@ -6,28 +6,18 @@
 /*   By: pafuente <pafuente@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 21:08:25 by pafuente          #+#    #+#             */
-/*   Updated: 2025/01/09 11:05:47 by pafuente         ###   ########.fr       */
+/*   Updated: 2025/01/10 12:34:48 by pafuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h> // malloc, free
-#include <unistd.h> // write
-#include <stdarg.h> // va_start, va_arg...
-#include <stdio.h> // real printf
-
-
-int	ft_putchar(int character)
-{
-	write(1, &character, 1);
-	return (1);
-}
+#include "ft_printf.h"
 
 int	ft_printf_format(va_list args, const char format)
 {
 	if (format == 'c')
 		return (ft_putchar(va_arg(args, int)));
-	// else if (format == 's')
-	// 	return (ft_putstr(va_arg(args, char *)));
+	else if (format == 's')
+		return (ft_putstr(va_arg(args, char *)));
 	// else if (format == 'p')
 	// 	return (ft_putpointer(va_arg(args, unsigned long long)));
 	// else if (format == 'd' || format == 'i')
@@ -49,6 +39,22 @@ int	ft_printf(char const *format, ...)
 
 	if (!format)
 		return (-1);
+	i = 0;
+	len = 0;
+	va_start(args, format);
+	while (format[i])
+	{
+		if (format[i] == '%')
+		{
+			len += ft_printf_format(args, format[i +1]);
+			i++;
+		}
+		else
+			len += ft_putchar(format[i]);
+		i++;
+	}
+	va_end(args);
+	return (len);
 
 }
 

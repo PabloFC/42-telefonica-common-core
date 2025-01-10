@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf_functions.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pafuente <pafuente@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/09 11:07:35 by pafuente          #+#    #+#             */
-/*   Updated: 2025/01/10 12:37:44 by pafuente         ###   ########.fr       */
+/*   Created: 2025/01/10 11:14:43 by pafuente          #+#    #+#             */
+/*   Updated: 2025/01/10 12:37:12 by pafuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// ----- Preamble -----
+#include "ft_printf.h"
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+int	ft_putchar(int character)
+{
+	write(1, &character, 1);
+	return (1);
+}
 
-# include <stdlib.h> // malloc, free
-# include <unistd.h> // write
-# include <stdarg.h> // va_start, va_arg...
-# include <stdio.h> // real printf
-# include "../libft/libft.h"
+int	ft_putstr(char *str)
+{
+	int	len;
 
-// ----- Functions -----
-
-int	ft_printf(const char *format, ...);
-int	ft_putchar(int character);
-int	ft_printf_format(va_list args, const char format);
-
-#endif
+	if (! str)
+		return (write (1, "(null)", 6));
+	len = 0;
+	while (str[len])
+		len++;
+	return (write (1, str, len));
+}
