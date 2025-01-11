@@ -6,7 +6,7 @@
 #    By: pafuente <pafuente@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/03 18:05:57 by pafuente          #+#    #+#              #
-#    Updated: 2025/01/10 12:31:52 by pafuente         ###   ########.fr        #
+#    Updated: 2025/01/10 13:59:48 by pafuente         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,8 +45,7 @@ CP = cp
 #copy.
 
 # ------------  RULES  ------------------------------------------------------- #
-.PHONY : all clean fclean re bonus
-#.PHONY is used to identify false targets
+
 
 all: $(NAME)
 
@@ -82,4 +81,5 @@ fclean:		clean
 re : fclean all
 #re rule do fclean and compile again.
 
-bonus:		all
+.PHONY : all clean fclean re bonus
+#.PHONY is used to identify false targets
