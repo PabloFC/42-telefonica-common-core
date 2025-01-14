@@ -6,7 +6,7 @@
 /*   By: pafuente <pafuente@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 21:08:25 by pafuente          #+#    #+#             */
-/*   Updated: 2025/01/13 11:17:25 by pafuente         ###   ########.fr       */
+/*   Updated: 2025/01/14 10:52:15 by pafuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int	ft_printf_format(va_list args, const char format)
 		return (ft_putpointer(va_arg(args, unsigned long long)));
 	else if (format == 'd' || format == 'i')
 		return (ft_putnum(va_arg(args, int)));
-	// else if (format == 'u')
-	// 	return (ft_putunsigned(va_arg(args, unsigned int)));
+	else if (format == 'u')
+		return (ft_unsigned(va_arg(args, unsigned int)));
 	// else if (format == 'x' || format == 'X')
 	// 	return (ft_puthexadecimal(va_arg(args, unsigned int), format));
 	// else if (format == '%')

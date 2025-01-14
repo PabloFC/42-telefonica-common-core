@@ -6,7 +6,7 @@
 /*   By: pafuente <pafuente@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 11:34:58 by pafuente          #+#    #+#             */
-/*   Updated: 2025/01/14 10:19:47 by pafuente         ###   ########.fr       */
+/*   Updated: 2025/01/14 10:44:38 by pafuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*ft_utoa(unsigned int num)
 	int		len;
 
 	len = ft_num_len(num);
-	str = (char *)malloc((len + 1) * sizeof(char *));
+	str = (char *)malloc((len + 1) * sizeof(char ));
 	if (!str)
 		return (NULL);
 	str[len] = '\0';
@@ -50,15 +50,19 @@ int	ft_unsigned(unsigned int n)
 	char	*str;
 	int		len;
 
+	len = 0;
 	if (n == 0)
 	{
-		len += write (1, "0", 1);
+		len = write (1, "0", 1);
 	}
 	else
 	{
 		str = ft_utoa(n);
-		len += ft_num_len(str);
-		free(str);
+		if (str)
+		{
+			len += ft_num_len(str);
+			free(str);
+		}
 	}
 	return (len);
 }

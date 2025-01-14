@@ -6,7 +6,7 @@
 /*   By: pafuente <pafuente@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:07:35 by pafuente          #+#    #+#             */
-/*   Updated: 2025/01/13 10:30:23 by pafuente         ###   ########.fr       */
+/*   Updated: 2025/01/14 11:16:53 by pafuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,7 @@ int	ft_putchar(int character);
 int	ft_printf_format(va_list args, const char format);
 int	ft_putstr(char *str);
 int	ft_putnum(int n);
+int	ft_putpointer(unsigned long long ptr);
+int	ft_unsigned(unsigned int n);
 
 #endif
