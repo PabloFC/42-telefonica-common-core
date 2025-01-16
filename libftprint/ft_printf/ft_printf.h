@@ -6,7 +6,7 @@
 /*   By: pafuente <pafuente@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:07:35 by pafuente          #+#    #+#             */
-/*   Updated: 2025/01/14 11:16:53 by pafuente         ###   ########.fr       */
+/*   Updated: 2025/01/16 09:50:40 by pafuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ int	ft_putstr(char *str);
 int	ft_putnum(int n);
 int	ft_putpointer(unsigned long long ptr);
 int	ft_unsigned(unsigned int n);
+int	ft_puthexa(unsigned int num, const char type);
 
 #endif

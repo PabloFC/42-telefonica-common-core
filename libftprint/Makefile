@@ -6,7 +6,7 @@
 #    By: pafuente <pafuente@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/03 18:05:57 by pafuente          #+#    #+#              #
-#    Updated: 2025/01/14 11:18:03 by pafuente         ###   ########.fr        #
+#    Updated: 2025/01/16 09:46:47 by pafuente         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,8 @@ FT_PRINTF = ./ft_printf
 #Rule to identify the location of ft_printf sources.
 
 # ------------  SOURCE FILES  ------------------------------------------------ #
-SRCS_FT_PRINTF = ft_printf.c ft_printf_functions.c ft_putpointer.c ft_unsigned.c\
-# 					ft_utils.c
+SRCS_FT_PRINTF = ft_printf.c ft_printf_functions.c ft_putpointer.c ft_unsigned.c ft_puthexa\
+# 					
 
 OBJS_FT_PRINTF = $(SRCS_FT_PRINTF:.c=.o)
 #() are used to group commands together.
