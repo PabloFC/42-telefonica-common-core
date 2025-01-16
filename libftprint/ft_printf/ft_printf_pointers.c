@@ -6,7 +6,7 @@
 /*   By: pafuente <pafuente@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 14:06:54 by pafuente          #+#    #+#             */
-/*   Updated: 2025/01/16 11:38:02 by pafuente         ###   ########.fr       */
+/*   Updated: 2025/01/16 13:58:22 by pafuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int	ft_printpointer_hex(unsigned long long ptr)
 	int	len;
 
 	len = 0;
-
 	if (ptr >= 16)
 	{
 		len += ft_printpointer_hex(ptr / 16);
@@ -53,7 +52,7 @@ int	ft_putpointer(unsigned long long ptr)
 	len = 0;
 	if (ptr == 0)
 	{
-		len += write(1, "(null)", 6);
+		len += write(1, "(nil)", 5);
 		return (len);
 	}
 	len = write (1, "0x", 2);
