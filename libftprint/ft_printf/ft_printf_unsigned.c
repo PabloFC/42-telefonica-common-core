@@ -6,7 +6,7 @@
 /*   By: pafuente <pafuente@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 11:34:58 by pafuente          #+#    #+#             */
-/*   Updated: 2025/01/14 10:44:38 by pafuente         ###   ########.fr       */
+/*   Updated: 2025/01/16 10:11:26 by pafuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,3 @@ int	ft_unsigned(unsigned int n)
 	}
 	return (len);
 }
-
-

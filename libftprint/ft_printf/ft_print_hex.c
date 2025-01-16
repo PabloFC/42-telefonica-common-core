@@ -6,7 +6,7 @@
 /*   By: pafuente <pafuente@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 11:46:46 by pafuente          #+#    #+#             */
-/*   Updated: 2025/01/16 09:47:26 by pafuente         ###   ########.fr       */
+/*   Updated: 2025/01/16 10:08:47 by pafuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,3 @@ int	ft_puthexa(unsigned int num, const char type)
 		ft_printhexa(num, type);
 	return (ft_hexlen(num));
 }
-

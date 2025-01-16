@@ -6,7 +6,7 @@
 /*   By: pafuente <pafuente@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 09:45:06 by pafuente          #+#    #+#             */
-/*   Updated: 2024/12/23 11:22:47 by pafuente         ###   ########.fr       */
+/*   Updated: 2025/01/16 10:05:01 by pafuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,4 @@ size_t	ft_strlen(const char *str)
 		count++;
 	}
 	return (count++);
-}
-
-int main ()
-{
-	char str[]="Hola";
-	int result = ft_strlen(str);
-	printf("la longitud de la cadena es %d",result);
-	return 0;
 }

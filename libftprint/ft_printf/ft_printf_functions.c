@@ -6,7 +6,7 @@
 /*   By: pafuente <pafuente@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 11:14:43 by pafuente          #+#    #+#             */
-/*   Updated: 2025/01/13 10:39:48 by pafuente         ###   ########.fr       */
+/*   Updated: 2025/01/16 10:12:34 by pafuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ int	ft_putstr(char *str)
 		len++;
 	return (write (1, str, len));
 }
-// This function converts an integer to a string, prints it, frees the used memory, and returns the length of the printed number.
+// This function converts an integer to a string, 
+//prints it, frees the used memory, 
+//and returns the length of the printed number.
 
 int	ft_putnum(int n)
 {
@@ -41,4 +43,3 @@ int	ft_putnum(int n)
 	free(str);
 	return (len);
 }
-
