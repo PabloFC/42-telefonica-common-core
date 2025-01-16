@@ -6,7 +6,7 @@
 #    By: pafuente <pafuente@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/03 18:05:57 by pafuente          #+#    #+#              #
-#    Updated: 2025/01/16 09:46:47 by pafuente         ###   ########.fr        #
+#    Updated: 2025/01/16 11:11:58 by pafuente         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ FT_PRINTF = ./ft_printf
 #Rule to identify the location of ft_printf sources.
 
 # ------------  SOURCE FILES  ------------------------------------------------ #
-SRCS_FT_PRINTF = ft_printf.c ft_printf_functions.c ft_putpointer.c ft_unsigned.c ft_puthexa\
+SRCS_FT_PRINTF = ft_printf.c ft_printf_functions.c ft_printf_pointers.c ft_printf_unsigned.c ft_print_hex.c\
 # 					
 
 OBJS_FT_PRINTF = $(SRCS_FT_PRINTF:.c=.o)
