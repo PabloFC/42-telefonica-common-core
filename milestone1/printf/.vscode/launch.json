@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/pafuente/Desktop/42_common_core_gitHub_PabloFC/printf/ft_printf",
-      "program": "/home/pafuente/Desktop/42_common_core_gitHub_PabloFC/printf/ft_printf/build/Debug/outDebug",
+      "cwd": "/home/pafuente/Desktop/42_common_core/milestone1/printf/ft_printf",
+      "program": "/home/pafuente/Desktop/42_common_core/milestone1/printf/ft_printf/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
