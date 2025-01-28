@@ -6,7 +6,7 @@
 /*   By: pafuente <pafuente@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 11:22:32 by pafuente          #+#    #+#             */
-/*   Updated: 2025/01/27 13:33:00 by pafuente         ###   ########.fr       */
+/*   Updated: 2025/01/28 12:10:47 by pafuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,32 @@ char	*ft_strjoin(char *s1, char *s2)
 		j++;
 	}
 	joined_str[i + j] = '\0';
+	free(s1);
 	return (joined_str);
+}
+
+char	*read_file(int fd, char *str)
+{
+	char	*buffer;
+	ssize_t	len;
+
+	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buffer)
+		return (NULL);
+	len = 1;
+	while (!(ft_strchr(str, '\n')) && len > 0)
+	{
+		len = read(fd, buffer, BUFFER_SIZE);
+		if (len == -1)
+		{
+			free(buffer);
+			return (NULL);
+		}
+		buffer[len] = '\0';
+		str = ft_strjoin(str, buffer);
+	}
+	free(buffer);
+	return (str);
 }
 
 
@@ -80,7 +105,6 @@ int main ()
         printf("%s\n", result);  // Imprime "Hola, mundo"
         free(result);  // Liberamos la memoria reservada
     }
-
-    
+	
 	return 0;
 }
