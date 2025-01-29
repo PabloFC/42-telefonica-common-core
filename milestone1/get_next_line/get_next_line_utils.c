@@ -6,23 +6,11 @@
 /*   By: pafuente <pafuente@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 11:22:32 by pafuente          #+#    #+#             */
-/*   Updated: 2025/01/28 12:10:47 by pafuente         ###   ########.fr       */
+/*   Updated: 2025/01/29 10:45:50 by pafuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-size_t	ft_strlen(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-	{
-		i++;
-	}
-	return (i);
-}
 
 char	*ft_strchr(char *s, int c)
 {
@@ -64,7 +52,7 @@ char	*ft_strjoin(char *s1, char *s2)
 		j++;
 	}
 	joined_str[i + j] = '\0';
-	free(s1);
+	free(joined_str);
 	return (joined_str);
 }
 
@@ -91,6 +79,36 @@ char	*read_file(int fd, char *str)
 	free(buffer);
 	return (str);
 }
+
+char	*ft_newline(char *str)
+{
+	char	*new;
+	int		i;
+
+	i = 0;
+	if (str[i] == 0)
+		return (NULL);
+	while (str[i] && str[i] != '\n')
+		i++;
+	new = (char *)malloc(sizeof(char) * (i + 2));
+	if (!new)
+		return (NULL);
+	i = 0;
+	while (str[i] && str[i] != '\n')
+	{
+		new[i] = str[i];
+		i++;
+	}
+	if (str[i] == '\n')
+	{
+		new[i] = '\n';
+		i++;
+	}
+	new[i] = '\0';
+	return (new);
+}
+
+
 
 
 int main ()
