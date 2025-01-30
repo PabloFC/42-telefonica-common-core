@@ -6,26 +6,22 @@
 /*   By: pafuente <pafuente@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 11:22:32 by pafuente          #+#    #+#             */
-/*   Updated: 2025/01/29 10:45:50 by pafuente         ###   ########.fr       */
+/*   Updated: 2025/01/30 12:26:21 by pafuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strchr(char *s, int c)
+size_t	ft_strlen(char *s)
 {
 	int	i;
 
 	i = 0;
 	while (s[i])
 	{
-		if (s[i] == (char)c)
-			return (&s[i]);
 		i++;
 	}
-	if (c == '\0')
-		return (&s[i]);
-	return (NULL);
+	return (i);
 }
 
 char	*ft_strjoin(char *s1, char *s2)
@@ -56,16 +52,17 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (joined_str);
 }
 
-char	*read_file(int fd, char *str)
+char	*ft_readfile(int fd, char *str)
 {
 	char	*buffer;
+	char	*temp;
 	ssize_t	len;
 
 	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
 		return (NULL);
 	len = 1;
-	while (!(ft_strchr(str, '\n')) && len > 0)
+	while ((!str || !ft_strchr(str, '\n')) && len > 0)
 	{
 		len = read(fd, buffer, BUFFER_SIZE);
 		if (len == -1)
@@ -74,7 +71,8 @@ char	*read_file(int fd, char *str)
 			return (NULL);
 		}
 		buffer[len] = '\0';
-		str = ft_strjoin(str, buffer);
+		temp = ft_strjoin_and_free(str, buffer);
+		str = temp;
 	}
 	free(buffer);
 	return (str);
@@ -108,21 +106,43 @@ char	*ft_newline(char *str)
 	return (new);
 }
 
-
-
-
-int main ()
+char	*ft_readline(char *line)
 {
-	 char str1[] = "Hola, ";
-    char str2[]="mundo";
+	char	*str;
+	int		i;
+	int		j;
 
-	char *result = ft_strjoin(str1, str2);
-
-    // Imprimimos el resultado
-    if (result) {
-        printf("%s\n", result);  // Imprime "Hola, mundo"
-        free(result);  // Liberamos la memoria reservada
-    }
-	
-	return 0;
+	i = 0;
+	while (line[i] && line[i] != '\n')
+		i++;
+	if (!line[i])
+	{
+		free(line);
+		return (NULL);
+	}
+	str = (char *)malloc(sizeof(char) * (ft_strlen(line) - i + 1));
+	if (!str)
+		return (NULL);
+	i++;
+	j = 0;
+	while (line[i])
+		str[j++] = line[i++];
+	str[j] = '\0';
+	free(line);
+	return (str);
 }
+
+// int main ()
+// {
+// 	 char str1[] = "Hola, ";
+//     char str2[]="mundo";
+
+// 	char *result = ft_strjoin(str1, str2);
+
+//     // Imprimimos el resultado
+//     if (result) {
+//         printf("%s\n", result);  // Imprime "Hola, mundo"
+//         free(result);  // Liberamos la memoria reservada
+//     }
+// 	return 0;
+// }
