@@ -6,7 +6,7 @@
 /*   By: pafuente <pafuente@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 11:20:03 by pafuente          #+#    #+#             */
-/*   Updated: 2025/01/31 10:44:53 by pafuente         ###   ########.fr       */
+/*   Updated: 2025/01/31 13:09:04 by pafuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ char	*ft_strdup(char *s)
 	return (new_str);
 }
 
-
 char	*ft_strjoin_and_free(char *s1, char *s2)
 {
 	char	*joined_str;
@@ -110,5 +109,3 @@ char	*get_next_line(int fd)
 	str = ft_readline(str);
 	return (out);
 }
-
-

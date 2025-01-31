@@ -6,11 +6,13 @@
 /*   By: pafuente <pafuente@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 11:22:32 by pafuente          #+#    #+#             */
-/*   Updated: 2025/01/31 10:48:44 by pafuente         ###   ########.fr       */
+/*   Updated: 2025/01/31 13:17:10 by pafuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+//returns the length of a given string s
 
 size_t	ft_strlen(char *s)
 {
@@ -23,6 +25,9 @@ size_t	ft_strlen(char *s)
 	}
 	return (i);
 }
+
+// concatenates two strings (s1 and s2)
+// and return the resulting new string
 
 char	*ft_strjoin(char *s1, char *s2)
 {
@@ -51,6 +56,8 @@ char	*ft_strjoin(char *s1, char *s2)
 	free(s1);
 	return (joined_str);
 }
+//reads data from a file descriptor fd and appends it to a given string
+//str until a newline character is encountered or the end of the file is reached
 
 char	*ft_readfile(int fd, char *str)
 {
@@ -80,10 +87,13 @@ char	*ft_readfile(int fd, char *str)
 	return (str);
 }
 
+// extracts a new string from the given string str up to and including 
+//the first newline character (\n)
+
 char	*ft_newline(char *str)
 {
 	char	*new;
-	int		i;
+	size_t	i;
 
 	i = 0;
 	if (str[i] == 0)
@@ -107,6 +117,9 @@ char	*ft_newline(char *str)
 	new[i] = '\0';
 	return (new);
 }
+
+//return a new string that contains the part of the original string
+// after the first newline character (\n).
 
 char	*ft_readline(char *line)
 {
