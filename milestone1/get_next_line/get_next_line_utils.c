@@ -6,7 +6,7 @@
 /*   By: pafuente <pafuente@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 11:22:32 by pafuente          #+#    #+#             */
-/*   Updated: 2025/01/30 12:26:21 by pafuente         ###   ########.fr       */
+/*   Updated: 2025/01/31 10:48:44 by pafuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_strlen(char *s)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (s[i])
@@ -48,7 +48,7 @@ char	*ft_strjoin(char *s1, char *s2)
 		j++;
 	}
 	joined_str[i + j] = '\0';
-	free(joined_str);
+	free(s1);
 	return (joined_str);
 }
 
@@ -68,6 +68,8 @@ char	*ft_readfile(int fd, char *str)
 		if (len == -1)
 		{
 			free(buffer);
+			free(str);
+			str = NULL;
 			return (NULL);
 		}
 		buffer[len] = '\0';

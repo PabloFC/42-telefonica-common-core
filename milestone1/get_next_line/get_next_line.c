@@ -6,7 +6,7 @@
 /*   By: pafuente <pafuente@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 11:20:03 by pafuente          #+#    #+#             */
-/*   Updated: 2025/01/30 12:26:39 by pafuente         ###   ########.fr       */
+/*   Updated: 2025/01/31 10:44:53 by pafuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ char	*ft_strchr(char *s, int c)
 {
 	int	i;
 
+	if (!s)
+		return (NULL);
 	i = 0;
 	while (s[i])
 	{
@@ -98,8 +100,12 @@ char	*get_next_line(int fd)
 		return (NULL);
 	}
 	str = ft_readfile(fd, str);
-	if (!str)
+	if (!str || str[0] == '\0')
+	{
+		free(str);
+		str = NULL;
 		return (NULL);
+	}
 	out = ft_newline(str);
 	str = ft_readline(str);
 	return (out);
