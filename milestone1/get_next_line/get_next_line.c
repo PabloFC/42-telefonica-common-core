@@ -6,11 +6,15 @@
 /*   By: pafuente <pafuente@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 11:20:03 by pafuente          #+#    #+#             */
-/*   Updated: 2025/01/31 13:09:04 by pafuente         ###   ########.fr       */
+/*   Updated: 2025/02/03 11:47:53 by pafuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+//locate the first occurrence of a character c in the string s.
+//It returns a pointer to the first occurrence of the character in the string, 
+//or NULL if the character is not found.
 
 char	*ft_strchr(char *s, int c)
 {
@@ -29,6 +33,9 @@ char	*ft_strchr(char *s, int c)
 		return (&s[i]);
 	return (NULL);
 }
+
+// ft_memcpy is designed to copy n bytes of data 
+// from a source memory location src to a destination memory location dest
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
@@ -51,6 +58,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	return (dest);
 }
 
+//The function ft_strdup is designed to create
+// a duplicate of the input string s.
 char	*ft_strdup(char *s)
 {
 	size_t	len;
@@ -87,6 +96,8 @@ char	*ft_strjoin_and_free(char *s1, char *s2)
 	return (joined_str);
 }
 
+// The get_next_line function is designed to read a line
+//from a file descriptor fd and return it as a string.
 char	*get_next_line(int fd)
 {
 	char		*out;
