@@ -6,7 +6,7 @@
 /*   By: pafuente <pafuente@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 11:20:03 by pafuente          #+#    #+#             */
-/*   Updated: 2025/02/03 11:47:53 by pafuente         ###   ########.fr       */
+/*   Updated: 2025/02/03 12:38:27 by pafuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,28 +72,6 @@ char	*ft_strdup(char *s)
 		ft_memcpy(new_str, s, len);
 	}
 	return (new_str);
-}
-
-char	*ft_strjoin_and_free(char *s1, char *s2)
-{
-	char	*joined_str;
-	size_t	i;
-	size_t	j;
-
-	if (!s1)
-		return (ft_strdup(s2));
-	joined_str = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (!joined_str)
-		return (NULL);
-	i = -1;
-	while (s1[++i])
-		joined_str[i] = s1[i];
-	j = -1;
-	while (s2[++j])
-		joined_str[i + j] = s2[j];
-	joined_str[i + j] = '\0';
-	free(s1);
-	return (joined_str);
 }
 
 // The get_next_line function is designed to read a line

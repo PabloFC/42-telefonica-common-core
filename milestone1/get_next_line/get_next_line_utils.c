@@ -6,7 +6,7 @@
 /*   By: pafuente <pafuente@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 11:22:32 by pafuente          #+#    #+#             */
-/*   Updated: 2025/01/31 13:17:10 by pafuente         ###   ########.fr       */
+/*   Updated: 2025/02/03 12:36:15 by pafuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,23 +35,17 @@ char	*ft_strjoin(char *s1, char *s2)
 	size_t	i;
 	size_t	j;
 
-	if (!s1 || !s2)
-		return (NULL);
+	if (!s1)
+		return (ft_strdup(s2));
 	joined_str = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!joined_str)
 		return (NULL);
-	i = 0;
-	while (s1[i])
-	{
+	i = -1;
+	while (s1[++i])
 		joined_str[i] = s1[i];
-		i++;
-	}
-	j = 0;
-	while (s2[j])
-	{
+	j = -1;
+	while (s2[++j])
 		joined_str[i + j] = s2[j];
-		j++;
-	}
 	joined_str[i + j] = '\0';
 	free(s1);
 	return (joined_str);
@@ -80,7 +74,7 @@ char	*ft_readfile(int fd, char *str)
 			return (NULL);
 		}
 		buffer[len] = '\0';
-		temp = ft_strjoin_and_free(str, buffer);
+		temp = ft_strjoin(str, buffer);
 		str = temp;
 	}
 	free(buffer);
