@@ -6,72 +6,101 @@
 /*   By: pafuente <pafuente@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 11:20:03 by pafuente          #+#    #+#             */
-/*   Updated: 2025/02/03 12:38:27 by pafuente         ###   ########.fr       */
+/*   Updated: 2025/02/03 13:36:54 by pafuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-//locate the first occurrence of a character c in the string s.
-//It returns a pointer to the first occurrence of the character in the string, 
-//or NULL if the character is not found.
+//reads data from a file descriptor fd and appends it to a given string
+//str until a newline character is encountered or the end of the file is reached
 
-char	*ft_strchr(char *s, int c)
+char	*ft_readfile(int fd, char *str)
 {
-	int	i;
+	char	*buffer;
+	char	*temp;
+	ssize_t	len;
 
-	if (!s)
+	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buffer)
 		return (NULL);
-	i = 0;
-	while (s[i])
+	len = 1;
+	while ((!str || !ft_strchr(str, '\n')) && len > 0)
 	{
-		if (s[i] == (char)c)
-			return (&s[i]);
-		i++;
+		len = read(fd, buffer, BUFFER_SIZE);
+		if (len == -1)
+		{
+			free(buffer);
+			free(str);
+			str = NULL;
+			return (NULL);
+		}
+		buffer[len] = '\0';
+		temp = ft_strjoin(str, buffer);
+		str = temp;
 	}
-	if (c == '\0')
-		return (&s[i]);
-	return (NULL);
+	free(buffer);
+	return (str);
 }
 
-// ft_memcpy is designed to copy n bytes of data 
-// from a source memory location src to a destination memory location dest
+// extracts a new string from the given string str up to and including 
+//the first newline character (\n)
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+char	*ft_newline(char *str)
 {
-	char	*ptr_dest;
-	char	*ptr_src;
+	char	*new;
 	size_t	i;
 
-	ptr_dest = (char *)dest;
-	ptr_src = (char *)src;
 	i = 0;
-	if (dest == NULL && src == NULL)
-	{
+	if (str[i] == 0)
 		return (NULL);
-	}
-	while (i < n)
+	while (str[i] && str[i] != '\n')
+		i++;
+	new = (char *)malloc(sizeof(char) * (i + 2));
+	if (!new)
+		return (NULL);
+	i = 0;
+	while (str[i] && str[i] != '\n')
 	{
-		ptr_dest[i] = ptr_src[i];
+		new[i] = str[i];
 		i++;
 	}
-	return (dest);
+	if (str[i] == '\n')
+	{
+		new[i] = '\n';
+		i++;
+	}
+	new[i] = '\0';
+	return (new);
 }
 
-//The function ft_strdup is designed to create
-// a duplicate of the input string s.
-char	*ft_strdup(char *s)
-{
-	size_t	len;
-	char	*new_str;
+//return a new string that contains the part of the original string
+// after the first newline character (\n).
 
-	len = (ft_strlen(s) + 1);
-	new_str = malloc(len);
-	if (new_str != NULL)
+char	*ft_restline(char *line)
+{
+	char	*str;
+	int		i;
+	int		j;
+
+	i = 0;
+	while (line[i] && line[i] != '\n')
+		i++;
+	if (!line[i])
 	{
-		ft_memcpy(new_str, s, len);
+		free(line);
+		return (NULL);
 	}
-	return (new_str);
+	str = (char *)malloc(sizeof(char) * (ft_strlen(line) - i + 1));
+	if (!str)
+		return (NULL);
+	i++;
+	j = 0;
+	while (line[i])
+		str[j++] = line[i++];
+	str[j] = '\0';
+	free(line);
+	return (str);
 }
 
 // The get_next_line function is designed to read a line
@@ -95,6 +124,6 @@ char	*get_next_line(int fd)
 		return (NULL);
 	}
 	out = ft_newline(str);
-	str = ft_readline(str);
+	str = ft_restline(str);
 	return (out);
 }
